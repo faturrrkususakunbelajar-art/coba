@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tungzzthriftsecond - Thrift Shop Online</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Header / Navbar -->
+  <header>
+    <div class="logo">Tungzzthrift<span>second</span></div>
+    <button class="btn-cart" onclick="toggleCart()">
+      🛒 Keranjang (<span id="cart-count">0</span>)
+    </button>
+  </header>
+
+  <!-- Form Upload Produk Baru -->
+  <section class="upload-section">
+    <h2>+ Tambah Produk Thrift Baru</h2>
+    <form id="upload-form" onsubmit="addNewProduct(event)">
+      <input type="text" id="p-name" placeholder="Nama Baju / Produk" required>
+      <input type="number" id="p-price" placeholder="Harga (Rp)" required>
+      <select id="p-category" required>
+        <option value="">Pilih Kategori</option>
+        <option value="Kaos">Kaos / T-Shirt</option>
+        <option value="Jaket">Jaket / Outer</option>
+        <option value="Celana">Celana</option>
+      </select>
+      <input type="text" id="p-size" placeholder="Ukuran (S/M/L/XL)" required>
+      <input type="file" id="p-image" accept="image/*" required>
+      <button type="submit" class="btn-primary">Upload Produk</button>
+    </form>
+  </section>
+
+  <!-- Main Content -->
+  <main class="container">
+    <!-- Filter Kategori -->
+    <div class="filter-container">
+      <button class="filter-btn active" onclick="filterCategory('all', this)">Semua</button>
+      <button class="filter-btn" onclick="filterCategory('Kaos', this)">Kaos</button>
+      <button class="filter-btn" onclick="filterCategory('Jaket', this)">Jaket</button>
+      <button class="filter-btn" onclick="filterCategory('Celana', this)">Celana</button>
+    </div>
+
+    <!-- Grid Produk -->
+    <div class="product-grid" id="product-list">
+      <!-- Produk akan muncul di sini secara dinamis -->
+    </div>
+  </main>
+
+  <!-- Sidebar Keranjang Belanja -->
+  <div class="cart-modal" id="cart-modal">
+    <div class="cart-header">
+      <h3>Keranjang Belanja</h3>
+      <button class="close-btn" onclick="toggleCart()">&times;</button>
+    </div>
+    <div class="cart-body" id="cart-items">
+      <p class="empty-msg">Keranjang kamu masih kosong.</p>
+    </div>
+    <div class="cart-footer">
+      <div class="total-price">
+        <span>Total:</span>
+        <span id="cart-total">Rp 0</span>
+      </div>
+      <button class="btn-wa" onclick="checkoutWA()">Pesan via WhatsApp 🚀</button>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
